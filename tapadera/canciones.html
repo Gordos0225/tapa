@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Canciones para Compartir</title>
+  <style>
+    body {
+      font-family: 'Arial', sans-serif;
+      background-color: #f9f0ff;
+      text-align: center;
+      padding: 40px;
+    }
+    h1 {
+      color: #8e44ad;
+      margin-bottom: 20px;
+    }
+    .cancion {
+      background-color: #fce4ec;
+      padding: 25px;
+      border-radius: 12px;
+      max-width: 700px;
+      margin: 20px auto;
+      font-size: 1.3em;
+      color: #333;
+    }
+    .boton {
+      background-color: #8e44ad;
+      color: white;
+      padding: 10px 25px;
+      margin: 10px;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      font-size: 1em;
+    }
+    .boton:hover {
+      background-color: #732d91;
+    }
+    a {
+      color: #d81b60;
+      font-weight: bold;
+      text-decoration: none;
+    }
+    a:hover {
+      text-decoration: underline;
+    }
+  </style>
+</head>
+<body>
+  <h1>🎵 Canciones para compartir con usted</h1>
+  <div id="cancion" class="cancion"></div>
+  <button class="boton" onclick="mostrarCancion()">🎶 Otra canción</button>
+  <button class="boton" onclick="window.location.href='menu.html'">⬅ Volver al menú principal</button>
+
+  <script>
+    const canciones = [
+      {
+        frase: "‘Porque tú eres mi sol, mi luna, mi razón para vivir.’",
+        titulo: "Contigo - La Otra",
+        enlace: "https://open.spotify.com/track/7uoynvwsKMefF60kNjByC6"
+      },
+      {
+        frase: "‘Y es que te amo, más que a nada en este mundo.’",
+        titulo: "Te Amo - Franco de Vita",
+        enlace: "https://open.spotify.com/track/3vxsXUUU9jUJrGNP4APtj3"
+      },
+      {
+        frase: "‘Solo tú me haces suspirar, solo tú me sabes amar.’",
+        titulo: "Eres - Café Tacvba",
+        enlace: "https://open.spotify.com/track/6kdCN6gTWLcLxmLXoUcwuI"
+      },
+      {
+        frase: "‘Y que digan lo que digan, tú eres mi mejor canción.’",
+        titulo: "Perfecto para mí - Kany García",
+        enlace: "https://open.spotify.com/track/29JYkU0LNq7T60a7DUsZ3B"
+      },
+      {
+        frase: "‘Nunca supe que tenía un alma, hasta que la vi reflejada en ti.’",
+        titulo: "All of Me - John Legend",
+        enlace: "https://open.spotify.com/track/3U4isOIWM3VvDubwSI3y7a"
+      },
+      {
+        frase: "‘Hoy te miro y me doy cuenta, que valió la pena todo.’",
+        titulo: "Tú - Noelia",
+        enlace: "https://open.spotify.com/track/28VYA5Ej7giZVva0r3EEla"
+      },
+      {
+        frase: "‘Y es que tú, eres lo mejor que me ha pasado en la vida.’",
+        titulo: "Mi persona favorita - Alejandro Sanz & Camila Cabello",
+        enlace: "https://open.spotify.com/track/3eB9M6owEHwk4nNrZRNUwd"
+      },
+      {
+        frase: "‘Quiero ser el que te abrace cuando tengas frío.’",
+        titulo: "Perfect - Ed Sheeran",
+        enlace: "https://open.spotify.com/track/0tgVpDi06FyKpA1z0VMD4v"
+      },
+      {
+        frase: "‘Y aunque no pueda verte, te siento aquí.’",
+        titulo: "Aunque no te pueda ver - Álex Ubago",
+        enlace: "https://open.spotify.com/track/2425UlXvkIkAEJAtAd8ROm"
+      },
+      {
+        frase: "‘Y solo tú logras calmar mis tormentas.’",
+        titulo: "Amor completo - Mon Laferte",
+        enlace: "https://open.spotify.com/track/2bcppCpTtkWVHbgXr1UpUd"
+      }
+    ];
+
+    let disponibles = [...canciones];
+
+    function mostrarCancion() {
+      if (disponibles.length === 0) disponibles = [...canciones];
+      const index = Math.floor(Math.random() * disponibles.length);
+      const seleccionada = disponibles.splice(index, 1)[0];
+      document.getElementById("cancion").innerHTML = `
+        <p>${seleccionada.frase}</p>
+        <p><a href="${seleccionada.enlace}" target="_blank">🎧 Escuchar: ${seleccionada.titulo}</a></p>
+      `;
+    }
+
+    window.onload = mostrarCancion;
+  </script>
+</body>
+</html>
