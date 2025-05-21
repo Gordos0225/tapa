@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Piropos para Usted</title>
+  <style>
+    body {
+      font-family: 'Arial', sans-serif;
+      background-color: #fff8f0;
+      text-align: center;
+      padding: 40px;
+    }
+    h1 {
+      color: #e91e63;
+      margin-bottom: 20px;
+    }
+    .piropo {
+      background-color: #ffe0ec;
+      padding: 25px;
+      border-radius: 12px;
+      max-width: 700px;
+      margin: 20px auto;
+      font-size: 1.4em;
+      color: #333;
+    }
+    .boton {
+      background-color: #e91e63;
+      color: white;
+      padding: 10px 25px;
+      margin: 10px;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      font-size: 1em;
+    }
+    .boton:hover {
+      background-color: #c2185b;
+    }
+    .seccion {
+      display: none;
+    }
+  </style>
+</head>
+<body>
+  <h1>💬 Piropos para usted</h1>
+
+  <div id="menu">
+    <button class="boton" onclick="mostrarSeccion('romanticos')">💞 Piropos Románticos</button>
+    <button class="boton" onclick="mostrarSeccion('atrevidos')">🔥 Piropos Atrevidos</button>
+    <br>
+    <button class="boton" onclick="window.location.href='menu.html'">⬅ Volver al menú principal</button>
+  </div>
+
+  <div id="romanticos" class="seccion">
+    <div id="piropoRomantico" class="piropo"></div>
+    <button class="boton" onclick="mostrarPiropo('romantico')">💘 Otro piropo romántico</button>
+    <button class="boton" onclick="volverMenu()">⬅ Volver</button>
+  </div>
+
+  <div id="atrevidos" class="seccion">
+    <div id="piropoAtrevido" class="piropo"></div>
+    <button class="boton" onclick="mostrarPiropo('atrevido')">🔥 Otro piropo atrevido</button>
+    <button class="boton" onclick="volverMenu()">⬅ Volver</button>
+  </div>
+
+  <script>
+    const romanticos = [
+      "Si su sonrisa fuera el cielo, yo viviría mirando hacia arriba toda la vida.",
+      "No necesito café si empiezo el día pensando en usted.",
+      "Usted no ilumina una habitación, la vuelve hogar.",
+      "Su ternura no cabe en ningún poema… ni en mi pecho.",
+      "Estar con usted convierte cualquier martes en viernes.",
+      "Usted es como una canción bonita: me la sé de memoria sin querer.",
+      "Cuando me mira, el mundo se detiene y todo tiene sentido.",
+      "No hay algoritmo que entienda lo mucho que me gusta usted.",
+      "Sus ojos tienen más magia que mil fuegos artificiales.",
+      "Mi suerte empezó el día que la conocí.",
+      "Quisiera ser pensamiento para estar en usted todo el día.",
+      "Usted convierte lo cotidiano en extraordinario.",
+      "Su risa tiene más poder que cualquier canción feliz.",
+      "Caminar a su lado es lo más parecido a volar.",
+      "No tengo palabras para describir lo mucho que la admiro.",
+      "Su presencia es paz y su abrazo, hogar.",
+      "Usted es lo más bonito que no estaba buscando.",
+      "Hasta los días grises se iluminan con su voz.",
+      "Usted es mi plan perfecto, incluso sin planear.",
+      "Cada segundo con usted es el mejor regalo que me ha dado la vida."
+    ];
+
+    const atrevidos = [
+      "Si mis pensamientos tuvieran volumen, estaría en problemas contigo todo el día.",
+      "Usted no camina... provoca.",
+      "Con solo un beso suyo, se me olvidan las palabras... pero se me enciende la imaginación.",
+      "Su piel merece poemas... pero primero mis manos.",
+      "No sé qué es más adictivo: su perfume o su forma de mirarme.",
+      "Hay miradas suyas que dicen más que mil caricias.",
+      "Si ser deseo fuera delito, sería culpable desde que la vi.",
+      "Solo usted logra encender mi alma con una sonrisa.",
+      "Sus labios deberían tener advertencia: altamente irresistibles.",
+      "¿Le han dicho que tiene un magnetismo... pecaminosamente dulce?",
+      "Usted no enamora… incendia.",
+      "Con una sola palabra suya, se me acelera todo… menos el juicio.",
+      "Su voz es la melodía que despierta mis deseos.",
+      "No hace falta noche para soñar con usted.",
+      "Su cintura fue diseñada para mis pensamientos.",
+      "Estoy dispuesto a pecar... si el pecado es usted.",
+      "Usted tiene la capacidad de volver travieso hasta mi silencio.",
+      "No sabría decirle qué parte de usted me gusta más... pero tengo una lista extensa.",
+      "Hay abrazos suyos que yo convertiría en ritual diario.",
+      "Usted no es fuego... es la chispa, la flama y el incendio completo."
+    ];
+
+    let restoRomantico = [...romanticos];
+    let restoAtrevido = [...atrevidos];
+
+    function mostrarSeccion(seccion) {
+      document.getElementById("menu").style.display = "none";
+      document.getElementById("romanticos").style.display = "none";
+      document.getElementById("atrevidos").style.display = "none";
+      document.getElementById(seccion).style.display = "block";
+      if (seccion === 'romanticos') mostrarPiropo('romantico');
+      if (seccion === 'atrevidos') mostrarPiropo('atrevido');
+    }
+
+    function volverMenu() {
+      document.getElementById("romanticos").style.display = "none";
+      document.getElementById("atrevidos").style.display = "none";
+      document.getElementById("menu").style.display = "block";
+    }
+
+    function mostrarPiropo(tipo) {
+      if (tipo === 'romantico') {
+        if (restoRomantico.length === 0) restoRomantico = [...romanticos];
+        const i = Math.floor(Math.random() * restoRomantico.length);
+        document.getElementById("piropoRomantico").textContent = restoRomantico.splice(i, 1)[0];
+      }
+      if (tipo === 'atrevido') {
+        if (restoAtrevido.length === 0) restoAtrevido = [...atrevidos];
+        const i = Math.floor(Math.random() * restoAtrevido.length);
+        document.getElementById("piropoAtrevido").textContent = restoAtrevido.splice(i, 1)[0];
+      }
+    }
+  </script>
+</body>
+</html>

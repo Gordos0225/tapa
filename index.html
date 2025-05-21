@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Hola, mi amor 💖</title>
+  <style>
+    body {
+      font-family: 'Arial', sans-serif;
+      text-align: center;
+      background-color: #ffe6f0;
+      padding: 50px;
+    }
+    h1 {
+      font-size: 2.5em;
+      color: #d63384;
+    }
+    p {
+      font-size: 1.2em;
+      color: #333;
+    }
+    input[type="text"] {
+      padding: 10px;
+      width: 200px;
+      border: 2px solid #d63384;
+      border-radius: 6px;
+      font-size: 1em;
+    }
+    .btn {
+      display: inline-block;
+      margin-top: 20px;
+      padding: 12px 24px;
+      background-color: #d63384;
+      color: white;
+      text-decoration: none;
+      border-radius: 8px;
+      font-size: 1em;
+      cursor: pointer;
+    }
+    .btn:hover {
+      background-color: #c2185b;
+    }
+    .error {
+      color: red;
+      margin-top: 10px;
+    }
+  </style>
+</head>
+<body>
+  <h1>¡Hola, mi amor! 💌</h1>
+  <p>Esto es un pequeño detalle de mi parte, pero para que usted pueda acceder,<br> debe ingresar el código que solo nosotros conocemos 💕</p>
+  <input type="text" id="codigo" placeholder="Ingrese el código">
+  <br>
+  <button class="btn" onclick="verificarCodigo()">Ingresar</button>
+  <p class="error" id="mensajeError"></p>
+
+  <script>
+    function verificarCodigo() {
+      const codigo = document.getElementById('codigo').value.trim();
+      const correcto = "250225"; // Aquí puedes poner su fecha o código especial
+
+      if (codigo === correcto) {
+        window.location.href = "menu.html";
+      } else {
+        document.getElementById('mensajeError').textContent = "Código incorrecto. Intente de nuevo 💔 recuerde esa fecha tan especial gorda, SI!";
+      }
+    }
+  </script>
+</body>
+</html>

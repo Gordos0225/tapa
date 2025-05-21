@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Mensajes Bonitos</title>
+  <style>
+    body {
+      font-family: 'Arial', sans-serif;
+      text-align: center;
+      background-color: #fffafc;
+      padding: 50px;
+    }
+    h1 {
+      color: #d63384;
+      font-size: 2.2em;
+      margin-bottom: 30px;
+    }
+    .categoria, .mensajes {
+      display: none;
+      flex-direction: column;
+      align-items: center;
+      gap: 15px;
+    }
+    .activo {
+      display: flex;
+    }
+    .link, .volver {
+      display: block;
+      width: 280px;
+      padding: 14px;
+      background-color: #f06292;
+      color: white;
+      text-decoration: none;
+      border-radius: 10px;
+      font-size: 1.1em;
+      transition: background-color 0.3s;
+      cursor: pointer;
+    }
+    .link:hover, .volver:hover {
+      background-color: #e91e63;
+    }
+    .mensaje {
+      background-color: #ffe6f0;
+      border-radius: 10px;
+      padding: 20px;
+      margin: 10px;
+      width: 80%;
+      max-width: 600px;
+      font-size: 1.1em;
+      color: #333;
+    }
+  </style>
+</head>
+<body>
+  <h1>Elija el tipo de mensaje que desea leer 💌</h1>
+
+  <div id="menu" class="categoria activo">
+    <div class="link" onclick="mostrarCategoria('romanticos')">❤️ Románticos</div>
+    <div class="link" onclick="mostrarCategoria('amor')">💕 Razones por las que la amo</div>
+    <div class="link" onclick="mostrarCategoria('animo')">🌈 De Ánimo</div>
+    <div class="link" onclick="mostrarCategoria('sola')">🌙 Para cuando esté sola</div>
+    <div class="link" onclick="mostrarCategoria('motivacion')">✨ Motivación bella</div>
+
+
+    
+      <a div class="link" href="menu.html"> 💞 regresar la menu </a>
+  </div>
+
+
+
+  </div>
+
+
+  <script>
+    const mensajesOriginales = {
+      romanticos: [
+        "Su forma de mirarme me derrite el alma.",
+        "Cada palabra suya me acaricia el corazón.",
+        "Estar a su lado convierte cualquier día común en una historia mágica.",
+        "Su risa es mi melodía favorita.",
+        "Sus abrazos son mi lugar seguro.",
+        "Cuando me toma la mano, el mundo desaparece.",
+        "Me hace creer en el amor cada día.",
+        "Su ternura me envuelve como un susurro dulce.",
+        "No necesito más que su presencia para ser feliz.",
+        "Me hace soñar despierto con cada gesto suyo.",
+        "Usted es el poema que siempre quise escribir.",
+        "Su amor es el código perfecto de mi felicidad.",
+        "Cada mirada suya me llena de paz.",
+        "Es la única que logra hacerme sonreír sin razón.",
+        "Su manera de ser es mi debilidad.",
+        "No hay rincón de mí que no le pertenezca.",
+        "Usted es mi momento favorito del día.",
+        "Su voz me acompaña incluso en el silencio.",
+        "Todo en usted me enamora una y otra vez.",
+        "Es mi casualidad más hermosa."],
+      amor: [
+        "Porque su sonrisa ilumina hasta mis días más grises.",
+        "Porque me escucha con el corazón.",
+        "Porque con usted aprendí lo que es amar de verdad.",
+        "Porque cada día me hace sentir especial.",
+        "Porque me hace reír incluso cuando no quiero.",
+        "Porque siempre encuentra palabras para levantarme el ánimo.",
+        "Porque confía en mí incluso cuando yo dudo.",
+        "Porque su forma de ver la vida me inspira.",
+        "Porque tiene un corazón que no le cabe en el pecho.",
+        "Porque me hace sentir en casa solo con un abrazo.",
+        "Porque siempre da lo mejor de sí.",
+        "Porque me acompaña en mis locuras.",
+        "Porque me respeta y me valora.",
+        "Porque con usted todo se siente más fácil.",
+        "Porque su voz es mi sonido favorito.",
+        "Porque me hace querer ser mejor persona.",
+        "Porque su risa es mi melodía preferida.",
+        "Porque nunca deja de sorprenderme.",
+        "Porque me cuida con ternura y paciencia.",
+        "Porque simplemente... es usted."
+      ],
+      animo: [
+        "Está haciendo lo mejor que puede, y eso ya es mucho.",
+        "No tiene que ser perfecta, solo tiene que ser usted misma.",
+        "Cada paso, por pequeño que parezca, es un avance.",
+        "Es más fuerte de lo que cree, más capaz de lo que imagina.",
+        "No hay noche tan oscura que su luz no pueda iluminar.",
+        "Incluso los días nublados tienen su belleza.",
+        "Tiene un corazón increíble que merece todo lo bueno.",
+        "Confíe en su valor, porque yo confío en usted.",
+        "Está hecha para cosas grandes.",
+        "Lo que hoy duele, mañana será parte de su fuerza.",
+        "Respire. Está avanzando, aunque no lo note.",
+        "Está aprendiendo, creciendo, brillando.",
+        "Mire cuánto ha logrado. Estoy tan orgulloso de usted.",
+        "Sus errores no la definen. Su valentía sí.",
+        "Estoy aquí con usted, siempre.",
+        "Su alma hermosa es su superpoder.",
+        "Las tormentas también pasan. Y usted florece después.",
+        "El mundo es mejor porque usted está en él.",
+        "Nunca subestime lo especial que es.",
+        "La admiro profundamente, incluso en silencio."],
+      sola: [
+        "Cuando se sienta sola, piense en todo el amor que le tengo.",
+        "Mi corazón está con usted, aunque no estemos en el mismo lugar.",
+        "Nunca está sola: me lleva en su alma.",
+        "Imagine mis brazos abrazándola fuerte, justo ahora.",
+        "Le envío mi calma en forma de pensamiento.",
+        "Estoy con usted, incluso en el silencio.",
+        "Cada estrella del cielo le susurra que la amo.",
+        "Aunque no lo diga, siempre estoy pensando en usted.",
+        "Mi amor cruza distancias, tiempos y palabras.",
+        "Usted habita en mí, en todo momento.",
+        "El universo entero conspira para recordarle que no está sola.",
+        "Estoy aquí, en su mente, en su corazón, en su recuerdo.",
+        "Cierre los ojos: allí estoy, susurrándole que todo estará bien.",
+        "Aunque se sienta sola, nunca lo está.",
+        "Somos dos corazones latiendo como uno, no lo olvide.",
+        "Mi amor le acompaña siempre, en cada paso.",
+        "Cuando extrañe mi voz, escuche su corazón: allí estoy.",
+        "Nunca se aleja de mí, porque es parte de mí.",
+        "Incluso cuando no hablo, estoy con usted en pensamiento.",
+        "Mi compañía no necesita presencia, solo amor sincero."],
+      motivacion: [
+        "Tiene todo lo que necesita para brillar.",
+        "Su talento, su corazón, su mente: todo en usted es valioso.",
+        "Cada día es una nueva oportunidad, y usted puede con todo.",
+        "Confíe en su luz. Es poderosa.",
+        "Usted es capaz de lograr cosas increíbles.",
+        "No dude de su camino: está creciendo, paso a paso.",
+        "Tiene el poder de cambiar su mundo.",
+        "Su perseverancia me inspira.",
+        "Cree en usted como yo creo en usted.",
+        "Su fuerza es hermosa.",
+        "Ningún sueño es demasiado grande para usted.",
+        "La forma en que se levanta cada vez me deja sin palabras.",
+        "Nunca olvide lo lejos que ha llegado.",
+        "Siga adelante, incluso si es lento. Está avanzando.",
+        "Su existencia ya es una victoria.",
+        "Cada obstáculo vencido es una medalla invisible.",
+        "Usted merece todo lo bueno que está por venir.",
+        "No necesita permiso para brillar.",
+        "Todo esfuerzo suyo vale la pena.",
+        "Su alma fuerte mueve montañas, aunque no lo note." ] 
+    };
+
+    const mensajesTemporales = JSON.parse(JSON.stringify(mensajesOriginales));
+
+    function mostrarCategoria(id) {
+      document.getElementById("menu").classList.remove("activo");
+      const secciones = document.querySelectorAll('.mensajes');
+      secciones.forEach(sec => sec.classList.remove("activo"));
+
+      if (mensajesTemporales[id].length === 0) {
+        mensajesTemporales[id] = [...mensajesOriginales[id]];
+      }
+
+      const index = Math.floor(Math.random() * mensajesTemporales[id].length);
+      const mensaje = mensajesTemporales[id].splice(index, 1)[0];
+
+      document.getElementById(`msg_${id}`).textContent = mensaje;
+      document.getElementById(id).classList.add("activo");
+    }
+
+    function volverAlMenu() {
+      const secciones = document.querySelectorAll('.mensajes');
+      secciones.forEach(sec => sec.classList.remove("activo"));
+      document.getElementById("menu").classList.add("activo");
+    }
+  </script>
+</body>
+</html>
